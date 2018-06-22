@@ -1,0 +1,29 @@
+# @see https://docs.docker.com/compose/compose-file/
+version: '3.3'
+
+services:
+  zeppelin:
+    image: apache/zeppelin:0.7.3
+    volumes:
+      - notebooks:/zeppelin/notebook
+      - ./shiro.ini:/zeppelin/conf/shiro.ini
+    ports: 
+      - 127.0.0.1:9527:8080
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+    configs:
+      - source: shiro_ini
+        target: /zeppelin/conf/shiro.ini
+        uid: '1000'
+        gid: '1000'
+        mode: 0555
+
+
+volumes:
+  notebooks:
+
+
+configs:
+  shiro_ini:
+    file: ./shiro.ini
+
