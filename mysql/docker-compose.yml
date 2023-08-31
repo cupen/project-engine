@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  mysql:
+    container_name: mysql57
+    restart: unless-stopped
+    env_file: .env
+    image: mysql:8.1.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      
+volumes:
+  mysql_data:

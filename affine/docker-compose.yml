@@ -1,0 +1,12 @@
+# @see https://docs.docker.com/compose/compose-file/
+version: '3.4'
+
+services:
+  affine:
+    container_name: affine
+    image: ghcr.io/toeverything/affine-self-hosted:pre-alpha
+    ports:
+      - 9999:3000
+
+volumes:
+  notebooks:

@@ -1,5 +1,8 @@
-# 使用
-拿 zeppelin 举个例子
+# Introduction
+It's use for quickly start a project with the development tools and dependencies.
+
+
+# Usage
 ```bash
 cd zeppelin
 docker-compose up -d
