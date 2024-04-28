@@ -1,0 +1,12 @@
+services:
+  registry:
+    container_name: registry
+    image: registry:2
+    restart: unless-stopped
+    ports:
+      - 1001:5000
+    volumes:
+      - registry-data:/var/lib/registry
+
+volumes:
+  registry-data:

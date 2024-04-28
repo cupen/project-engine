@@ -1,3 +1,4 @@
 include:
   - jenkins/compose.yml
+  - registry/compose.yml
 
