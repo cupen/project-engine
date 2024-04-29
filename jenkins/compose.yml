@@ -1,6 +1,6 @@
 services:
   dind:
-    container_name: jenkins-docker
+    container_name: docker
     image: docker:dind
     ports:
       - 2376:2376
