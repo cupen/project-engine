@@ -7,6 +7,8 @@ services:
       - 1001:5000
     volumes:
       - registry-data:/var/lib/registry
+    environment:
+      - REGISTRY_HTTP_PREFIX=/docker
 
 volumes:
   registry-data:

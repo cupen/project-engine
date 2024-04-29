@@ -22,6 +22,12 @@ install-with-nginx:
 	nginx -t && systemctl reload nginx
 
 
+upload-over-ssh:
+	ssh $(host) "rm -fr /tmp/project-engine && mkdir -p /tmp/project-engine /data/project-engine"
+	scp -r ./* $(host):/tmp/project-engine
+	ssh $(host) "sudo cp -r /tmp/project-engine/* /data/project-engine" 
+
+
 install-over-ssh:
 	ssh $(host) "rm -fr /tmp/project-engine && mkdir -p /tmp/project-engine /data/project-engine"
 	scp -r ./* $(host):/tmp/project-engine
