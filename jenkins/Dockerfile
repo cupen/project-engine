@@ -9,7 +9,6 @@ USER root
 RUN sed -i -e 's/http:\/\/deb.debian.org/https:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 RUN cat /etc/apt/sources.list.d/debian.sources
 
-
 RUN curl -fsSLo \
   /usr/share/keyrings/docker-archive-keyring.asc \
   https://download.docker.com/linux/debian/gpg
@@ -27,6 +26,13 @@ RUN apt-get install -y \
     python3-invoke \
     pipenv 
 
+RUN apt-get install -y wget 
+RUN wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 \
+          -O /usr/local/bin/earthly \
+    && chmod +x /usr/local/bin/earthly \
+    && /usr/local/bin/earthly bootstrap --with-autocomplete
+
 RUN apt-get install -y nodejs npm 
+
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean docker-workflow"
